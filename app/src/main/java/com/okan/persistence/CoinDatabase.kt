@@ -9,7 +9,7 @@ abstract class CoinDatabase : RoomDatabase() {
     abstract fun coinDao(): CoinDao
 
     companion object {
-        val DATABASE_NAME: String = "coin_db"
+        const val DATABASE_NAME: String = "coin_db"
     }
 
 }
