@@ -10,8 +10,10 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import java.lang.Exception
+import javax.inject.Inject
 
 class MainRepository
+@Inject
 constructor(
     private val coinDao: CoinDao,
     private val coinRetrofit: CoinRetrofit,
