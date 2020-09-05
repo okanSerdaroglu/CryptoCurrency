@@ -1,7 +1,8 @@
-package com.okan.cryptocurrency
+package com.okan.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.okan.cryptocurrency.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
