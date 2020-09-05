@@ -1,4 +1,4 @@
-package com.okan.repository
+package com.okan.repository.main
 
 import com.okan.api.CoinRetrofit
 import com.okan.api.NetworkMapper
@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import java.lang.Exception
 
-class MainRepository
+class CoinListRepository
 constructor(
     private val coinDao: CoinDao,
     private val coinRetrofit: CoinRetrofit,

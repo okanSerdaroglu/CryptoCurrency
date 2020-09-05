@@ -1,4 +1,4 @@
-package com.okan.ui
+package com.okan.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,22 +6,22 @@ import android.view.View
 import androidx.activity.viewModels
 import com.okan.cryptocurrency.R
 import com.okan.model.Coin
-import com.okan.ui.MainStateEvent.GetCoinListEvent
+import com.okan.ui.main.MainStateEvent.GetCoinListEvent
 import com.okan.utils.DataState
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_coin_list.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import java.lang.StringBuilder
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class CoinListActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_coin_list)
         subscribeObservers()
         viewModel.setStateEvent(GetCoinListEvent)
     }
