@@ -15,7 +15,7 @@ data class CoinNetworkEntity(
 
     @SerializedName("name")
     @Expose
-    val name: String,
+    val name: String
 
 )
 
