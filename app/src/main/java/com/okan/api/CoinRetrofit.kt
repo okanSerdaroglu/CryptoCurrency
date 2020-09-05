@@ -4,7 +4,7 @@ import retrofit2.http.GET
 
 interface CoinRetrofit {
 
-    @GET("")
+    @GET("coins/list")
     suspend fun getCoinList(): List<CoinNetworkEntity>
 
 }

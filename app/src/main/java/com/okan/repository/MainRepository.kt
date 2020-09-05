@@ -6,7 +6,6 @@ import com.okan.model.Coin
 import com.okan.persistence.CacheMapper
 import com.okan.persistence.CoinDao
 import com.okan.utils.DataState
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import java.lang.Exception
@@ -22,14 +21,14 @@ constructor(
 ) {
     suspend fun getCoinList(): Flow<DataState<List<Coin>>> = flow {
         emit(DataState.Loading)
-        delay(1500)
+
         try {
             // retrieve from network
             val networkCoinList = coinRetrofit.getCoinList()
             val coinList = networkMapper.mapFromEntityList(networkCoinList)
 
             // send to cache
-            for (coin in coinList) {
+           for (coin in coinList) {
                 coinDao.insert(cacheMapper.mapToEntity(coin))
             }
 
