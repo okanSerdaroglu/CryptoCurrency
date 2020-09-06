@@ -1,4 +1,4 @@
-package com.okan.model
+package com.okan.model.main
 
 data class Coin(
     val id: String,

@@ -3,7 +3,7 @@ package com.okan.ui.main
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 
-import com.okan.model.Coin
+import com.okan.model.main.Coin
 import com.okan.repository.main.CoinListRepository
 import com.okan.utils.DataState
 import kotlinx.coroutines.ExperimentalCoroutinesApi

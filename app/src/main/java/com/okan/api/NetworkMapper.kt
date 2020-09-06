@@ -1,6 +1,6 @@
 package com.okan.api
 
-import com.okan.model.Coin
+import com.okan.model.main.Coin
 import com.okan.utils.EntityMapper
 import javax.inject.Inject
 

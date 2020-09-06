@@ -1,6 +1,7 @@
 package com.okan.repository.auth
 
 import com.google.firebase.auth.FirebaseAuth
+import com.okan.model.auth.LoginResult
 import com.okan.utils.DataState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -16,20 +17,24 @@ constructor(
     suspend fun loginWithEmail(
         email: String,
         password: String
-    ): Flow<DataState<Boolean>> = flow {
-
+    ): Flow<DataState<LoginResult>> = flow {
         emit(DataState.Loading)
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 GlobalScope.launch(Dispatchers.IO) {
                     if (task.isSuccessful) {
-                        emit(DataState.Success(true))
+                        emit(
+                            DataState.Success(
+                                LoginResult(
+                                    task.isSuccessful
+                                )
+                            )
+                        )
                     } else {
                         emit(DataState.Error(task.exception!!))
                     }
                 }
             }
-
     }
 
 }

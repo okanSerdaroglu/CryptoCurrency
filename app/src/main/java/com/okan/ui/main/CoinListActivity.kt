@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import com.okan.cryptocurrency.R
-import com.okan.model.Coin
+import com.okan.model.main.Coin
 import com.okan.ui.main.MainStateEvent.GetCoinListEvent
 import com.okan.utils.DataState
 import dagger.hilt.android.AndroidEntryPoint

@@ -2,7 +2,7 @@ package com.okan.repository.main
 
 import com.okan.api.CoinRetrofit
 import com.okan.api.NetworkMapper
-import com.okan.model.Coin
+import com.okan.model.main.Coin
 import com.okan.persistence.CacheMapper
 import com.okan.persistence.CoinDao
 import com.okan.utils.DataState
