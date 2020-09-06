@@ -12,7 +12,6 @@ import com.okan.model.auth.LoginResult
 import com.okan.ui.main.CoinListActivity
 import com.okan.utils.DataState
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_coin_list.*
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -56,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun displayProgressBar(isDisplayed: Boolean) {
-        progress_bar.visibility = if (isDisplayed) View.VISIBLE else View.GONE
+        loading.visibility = if (isDisplayed) View.VISIBLE else View.GONE
     }
 
     private fun showErrorMessage(message: String) {

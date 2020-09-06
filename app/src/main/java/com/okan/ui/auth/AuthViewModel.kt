@@ -11,6 +11,8 @@ import com.okan.ui.auth.AuthStateEvent.Login
 import com.okan.ui.auth.AuthStateEvent.None
 import com.okan.utils.DataState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
@@ -32,7 +34,9 @@ constructor(
                     authRepository.loginWithEmail(
                         email = authStateEvent.email,
                         password = authStateEvent.password
-                    )
+                    ).onEach {
+                        _dataState.value = it
+                    }.launchIn(viewModelScope)
                 }
 
                 is None -> {
@@ -41,7 +45,6 @@ constructor(
             }
         }
     }
-
 }
 
 sealed class AuthStateEvent {

@@ -1,5 +1,6 @@
 package com.okan.repository.auth
 
+import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.okan.model.auth.LoginResult
 import com.okan.utils.DataState
@@ -15,7 +16,10 @@ class AuthRepository
 constructor(
     private val firebaseAuth: FirebaseAuth
 ) {
-    fun loginWithEmail(
+    init {
+        Log.d("firebaseAuth",firebaseAuth.toString())
+    }
+   suspend fun loginWithEmail(
         email: String,
         password: String
     ): Flow<DataState<LoginResult>> = flow {
@@ -23,7 +27,7 @@ constructor(
         try {
             firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
-                    GlobalScope.launch(Dispatchers.IO) {
+                    GlobalScope.launch(Dispatchers.Main) {
                         if (task.isSuccessful) {
                             emit(
                                 DataState.Success(
