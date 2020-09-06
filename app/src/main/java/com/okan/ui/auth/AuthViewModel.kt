@@ -5,9 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.okan.model.auth.LoginResult
 import com.okan.repository.auth.AuthRepository
 import com.okan.ui.auth.AuthStateEvent.Login
 import com.okan.ui.auth.AuthStateEvent.None
+import com.okan.utils.DataState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 
@@ -18,9 +20,9 @@ constructor(
     private val authRepository: AuthRepository
 ) : ViewModel() {
 
-    private val _dataState: MutableLiveData<Boolean> = MutableLiveData()
+    private val _dataState: MutableLiveData<DataState<LoginResult>> = MutableLiveData()
 
-    val dataState: LiveData<Boolean>
+    val dataState: LiveData<DataState<LoginResult>>
         get() = _dataState
 
     fun setStateEvent(authStateEvent: AuthStateEvent) {

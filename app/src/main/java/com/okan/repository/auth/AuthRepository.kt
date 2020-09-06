@@ -9,32 +9,38 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class AuthRepository
 constructor(
     private val firebaseAuth: FirebaseAuth
 ) {
-    suspend fun loginWithEmail(
+    fun loginWithEmail(
         email: String,
         password: String
     ): Flow<DataState<LoginResult>> = flow {
         emit(DataState.Loading)
-        firebaseAuth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                GlobalScope.launch(Dispatchers.IO) {
-                    if (task.isSuccessful) {
-                        emit(
-                            DataState.Success(
-                                LoginResult(
-                                    task.isSuccessful
+        try {
+            firebaseAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    GlobalScope.launch(Dispatchers.IO) {
+                        if (task.isSuccessful) {
+                            emit(
+                                DataState.Success(
+                                    LoginResult(
+                                        task.isSuccessful
+                                    )
                                 )
                             )
-                        )
-                    } else {
-                        emit(DataState.Error(task.exception!!))
+                        } else {
+                            emit(DataState.Error(task.exception!!))
+                        }
                     }
                 }
-            }
+        }catch (e:Exception){
+            emit(DataState.Error(e))
+        }
+
     }
 
 }
